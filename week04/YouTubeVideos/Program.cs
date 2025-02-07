@@ -1,31 +1,44 @@
 using System;
-
+using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
         Console.WriteLine("Hello World! This is the YouTubeVideos Project.");
+        Console.Clear();
 
-        Video video1 = new Video("Best goals in UEFA Champiopns League History", "ESPN", 540);
-        Video video2 = new Video("Legendary Knockouts in Boxing", "HBO Sports", 720);
-        Video video3 = new Video("Most Epic Moments in Formula 1", "F1 Official", 900);
+        List<Video> videos = new List<Video>();
 
-        video1.AddComment(new Comment("Carlos", "Messi's goal was unbelievable!"));
-        video1.AddComment(new Comment("Anna", "Cristiano Ronaldo's bicycle kick is the best."));
-        video1.AddComment(new Comment("Peter", "I love long-range goals."));
 
-        video2.AddComment(new Comment("Luis", "Tyson's KO is still brutal."));
-        video2.AddComment(new Comment("George", "Mayweather was not a knockout artist, but his technique was incredible."));
-        video2.AddComment(new Comment("Maria", "Ali ws a genius in the ring, such great fights."));
+        Video video1 = new Video("Funny Cats", "Animals LOL", 930);
+        video1.AddComment(new Comment("Kley","Hahahaha 🤣😂🤣"));
+        video1.AddComment(new Comment("Katherine", "I need to record my cat!"));
+        video1.AddComment(new Comment("Kleber", "The first white cat is too similar to my Campanita."));
+        videos.Add(video1);
 
-        video3.AddComment(new Comment("Diego", "That overtake by Senna was historic"));
-        video3.AddComment(new Comment("Sonia", "Schumacher had incredible control of the car."));
-        video3.AddComment(new Comment("Andrew", "Watching Verstappen's comeback is impressive."));
+        Video video2 = new Video("Why was Hashima abandoned?", "Un Mundo Inmenso", 596);
+        video2.AddComment(new Comment("Jeronimo","Entré más rápido que tomarme un ferry a Tristán de Acuña"));
+        video2.AddComment(new Comment("Isaac", "Excelente como siempre ❤️"));
+        video2.AddComment(new Comment("Jesus", "Hay un video de UMI = es un buen día"));
+        videos.Add(video2);
 
-        video1.DisplayVideo();
-        video2.DisplayVideo();
-        video3.DisplayVideo();
 
+        Video video3 = new Video("Deutsch lernen mit Videos | Familienalltag in Deutschland", "Deutsch lernen mit der DW", 316);
+        video3.AddComment(new Comment("@rotblumen","Vielen Dank für Ihr Film"));
+        video3.AddComment(new Comment("@Mohcine", "Schönes video ❤️❤️❤️"));
+        video3.AddComment(new Comment("@Wirakoscha", "Angeblich ist Lena unsterblich, Sie trägt kein Helm auf."));
+        videos.Add(video3);
+
+        Video video4 = new Video("Germans Describe Their Profession | Easy German 556", "Easy German", 851);
+        video4.AddComment(new Comment("Ameen Ali","4:42 subtitles were the only way I'd recognize/hear that 'beziehungsweise'."));
+        video4.AddComment(new Comment("Amanda Fernandes", "Was für ein cooles Video! Ich bin Softwareentwickler, lebe in Brasilien und bin noch Anfänger in Deutsch."));
+        video4.AddComment(new Comment("@cad6918", "Vielen vielen Dank für Ihre Mühe!  So ein schöner Programm!❤"));
+        videos.Add(video4);
+        
+        foreach (var video in videos)
+        {
+            video.DisplayVideo();
+        }
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class Video 
 {
-    string _author;
-    string _title;
-    int _duration;
+    private string _author;
+    private string _title;
+    private int _duration;
     private List<Comment> _commentList = new List<Comment>();
 
 
@@ -27,15 +27,18 @@ public class Video
     }
 
     public void DisplayVideo()
-    {
-        Console.WriteLine($"\nVideo: {_title} by {_author}");
-        Console.WriteLine($"Duration: {_duration} seconds");
-        Console.WriteLine($"Number of comments: {GetCountCommentList()}");
-        Console.WriteLine($"Comments:");
+    {       
+            int index = 1;
+            Console.WriteLine($"\nVideo: {_title} by {_author}");
+            Console.WriteLine($"Duration: {_duration} seconds");
+            Console.WriteLine($"Number of comments: {GetCountCommentList()}");
+            Console.WriteLine($"Comments:");
 
-        foreach(var comment in _commentList)
-        {
-            comment.DisplayComment();
-        }
+            foreach(var comment in _commentList)
+            {
+                Console.Write($"{index}. ");
+                comment.DisplayComment();
+                index ++;
+            }
     }
 }
