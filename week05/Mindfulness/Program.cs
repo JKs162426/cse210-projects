@@ -42,6 +42,9 @@ class Program
                 Thread.Sleep(3000);
             }
         }
+
+        //I added an activity counter that will tell the user how many activities they completed and leave along with a message.
+        //And also a message if they logged in but did not complete any activity to motivate them to come back.
         if (activityCount > 0)
         {
             Console.WriteLine($"You did {activityCount} activities today!");
