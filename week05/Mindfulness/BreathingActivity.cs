@@ -20,10 +20,16 @@ public class BreathingActivity : Activities
         Console.Clear();
         Console.WriteLine("Get ready");
         ShowSpinner(3);
-        Thread.Sleep(_duration * 1000);
-        Console.Clear();
-        DisplayEndingMessage();
-        Thread.Sleep(3000);
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_duration);
 
+        while (DateTime.Now < endTime)
+        {   
+            Console.WriteLine("\nBreath in...");
+            ShowCountdown(4);
+            Console.WriteLine("Breath out...");
+            ShowCountdown(6);
+        }
+        DisplayEndingMessage();
     }
 }

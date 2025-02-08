@@ -2,9 +2,9 @@ using System;
 
 public class Activities
 {
-    protected string _name;
-    protected string _description;
-    protected int _duration;
+    protected string _name = "";
+    protected string _description = "";
+    protected int _duration = 0;
 
     public Activities()
     {
@@ -21,14 +21,17 @@ public class Activities
     public void DisplayStartingMessage()
     {
         Console.WriteLine($"Welcome to the {_name}");
-        Console.WriteLine($"This activity will help you {_description}");
-        Console.WriteLine("How long, seconds, would you like for your session?");
+        Console.WriteLine($"\nThis activity will help you {_description}");
+        Console.WriteLine("\nHow long, seconds, would you like for your session?");
         _duration = int.Parse(Console.ReadLine());
     }
 
     public void DisplayEndingMessage()
-    {
-        Console.WriteLine($"You have completed another {_duration} seconds of the {_name}");
+    {   
+        Console.WriteLine("\nWell done!");
+        ShowSpinner(3);
+        Console.WriteLine($"\nYou have completed another {_duration} seconds of the {_name}");
+        Thread.Sleep(5000);
     }
 
     public void DisplayMenu()
@@ -45,8 +48,8 @@ public class Activities
     public void ShowSpinner(int seconds)
     {
 
-        //List<string> animation = new List<string> {"|", "/", "-", "\\"};
-        List<string> animation = new List<string> {"🔵", "🟢", "🟡", "🔴"};
+        List<string> animation = new List<string> {"|", "/", "-", "\\"};
+        //List<string> animation = new List<string> {"🔵", "🟢", "🟡", "🔴"};
 
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(seconds);
