@@ -11,9 +11,14 @@ public class Customer
         _address = address;
     }
 
-    public string GetShippingLabel()
+    public string GetCustomerName()
     {
-        return $"Name: {_customerName}\nAddress: {_address.DisplayAddress()}";
+        return _customerName;
+    }
+
+    public void SetCustomerName(string customerName)
+    {
+        _customerName = customerName;
     }
 
     public bool GetIsInUnitedStates()
@@ -21,8 +26,4 @@ public class Customer
         return _address.GetIsInUnitedStates();
     }
 
-    public void DisplayShippingLabel()
-    {
-        Console.WriteLine(GetShippingLabel());
-    }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class Order
 {
     private Customer _customer;
-    private List<Product> _products = new List<Product>();
+    List<Product> products = new List<Product>();
 
     public Order(Customer customer)
     {
@@ -13,36 +13,44 @@ public class Order
 
     public void AddProduct(Product product)
     {
-        _products.Add(product);
+        products.Add(product);
     }
 
-    public double GetTotalOrderCost()
-    {
-        double totalCost = 0;
-        foreach (var product in _products)
+    public double GetTotalCost(Address IsInUSA)
+    {   
+        double totalProductCost = 0;
+
+        foreach (var p in products)
         {
-            totalCost += product.GetProductCost();
+            totalProductCost += p.GetProductCost(IsInUSA);
+        }
+        
+        if (IsInUSA.GetIsInUnitedStates())
+        {
+            totalProductCost += 5;
+        }
+        else
+        {
+            totalProductCost += 35;
         }
 
-        double shippingCost = _customer.GetIsInUnitedStates() ? 5.0 : 35.0;
-        totalCost += shippingCost;
-
-        return totalCost;
+        return totalProductCost;
     }
 
-    public void DisplayOrderInformation()
-    {
-        Console.WriteLine("\n===== ORDER INFORMATION =====");
-
-        Console.WriteLine("\nPacking Label: ");
-        foreach (var product in _products)
-        {
-            Console.WriteLine(product.GetProductLabel());
+    public void GetPackingLabel()
+    {   
+        foreach(var p in products)
+        {   
+            string nameOfProd = p.GetProductName();
+            int idOfProd = p.GetProductId();
+            Console.WriteLine($"\nName of the product: {nameOfProd}");
+            Console.WriteLine($"Product Id: {idOfProd}");
         }
+    }
 
-        Console.WriteLine("\nShipping Label: ");
-        _customer.DisplayShippingLabel();
-
-        Console.WriteLine($"\nTotal Order Cost (including shipping): ${GetTotalOrderCost()}");
+    public void GetShippingLabel(Address customerAddress)
+    {   
+        string shippingInfo = $"Name: {_customer.GetCustomerName()}. Address: {customerAddress.DisplayAddress()}";
+        Console.WriteLine(shippingInfo);
     }
 }

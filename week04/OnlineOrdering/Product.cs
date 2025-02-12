@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 
 public class Product
 {
@@ -8,6 +9,10 @@ public class Product
 
     private int _price;
 
+    public Product()
+    {
+
+    }
     public Product(string productName, int productId, int quantity, int price)
     {
         _productName = productName;
@@ -15,13 +20,38 @@ public class Product
         _quantity = quantity;
         _price = price;
     }
-    public double GetProductCost()
+
+    public string GetProductName()
     {
-        return _quantity * _price;
+        return _productName;
     }
 
-    public string GetProductLabel()
+    public void SetProductName(string productName)
     {
-        return $"Product: {_productName} (ID: {_productId})";
+        _productName = productName;
+    }
+
+    public int GetProductId()
+    {
+        return _productId;
+    }
+
+    public void SetProductID(int productId)
+    {
+        _productId = productId;
+    }
+
+    public double GetProductCost(Address IsInUSA)
+    {   
+        double productCost = _price * _quantity;
+        if (IsInUSA.GetIsInUnitedStates())
+        {
+            productCost += 3;
+        }
+        else 
+        {
+            productCost += 5;
+        }
+        return productCost;
     }
 }

@@ -4,10 +4,15 @@ using Microsoft.VisualBasic;
 public class Address
 {
     private string _streetAddress;
-    string _city;
+    private string _city;
     private string _stateOrProvince;
 
     private string _country;
+
+    public Address()
+    {
+
+    }
 
     public Address(string streetAddress, string city,string stateOrProvince, string country)
     {
@@ -16,13 +21,16 @@ public class Address
         _stateOrProvince = stateOrProvince;
         _country = country;
     }
+
+
     public bool GetIsInUnitedStates()
     {
         return _country == "USA";
     }
 
     public string DisplayAddress()
-    {
-        return $"{_streetAddress}, {_city}, {_stateOrProvince}, {_country}.";
+    {   
+        string customerAddress = $"{_streetAddress}, {_city}, {_stateOrProvince}, {_country}.";
+        return customerAddress;
     }
 }
